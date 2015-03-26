@@ -1,0 +1,16 @@
+body {
+  padding: 50px; }
+  body .clear {
+    clear: both; }
+  body #navigation {
+    margin: 0 0 15px 0; }
+  body #admin_tab {
+    margin-top: 30px;
+    width: 30%;
+    float: left; }
+  body #admin_content {
+    margin-top: 30px;
+    width: 68%;
+    float: right; }
+
+/*# sourceMappingURL=layout.css.map */

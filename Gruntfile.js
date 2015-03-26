@@ -11,9 +11,9 @@ module.exports = function(grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: 'public/stylesheets/src',
+          cwd: 'views',
           src: ['**/*.sass'],
-          dest: 'public/stylesheets/bin',
+          dest: 'views',
           ext: '.css'
         }]
       }
