@@ -1,0 +1,95 @@
+include base
+extends layout
+block content
+    #index
+        .ui.two.column.grid
+            .column
+                +news()
+                +projects()
+            .column
+                +introduces()
+                +sign-up()
+                
+               
+
+mixin news
+    .ui.segment#news
+        a.ui.ribbon.label.green.big 新闻
+        .ui.animated.divided.list
+            .item
+                i.icon.triangle.right
+                .content 
+                    .header #{title}
+                    .description 
+                        span  智能硬件和数据分析俱乐部 通知概要 
+                        span.right.floated [2015-3-25]
+            .item
+                i.icon.triangle.right
+                .content 
+                    .header #{title}
+                    .description 智能硬件和数据分析俱乐部
+            .item
+                i.icon.triangle.right
+                .content 
+                    .header #{title}
+                    .description 智能硬件和数据分析俱乐部 
+mixin projects
+    .ui.segment#project
+        a.ui.ribbon.label.green.big 项目
+        .ui.animated.divided.list
+            .item
+                i.icon.triangle.right
+                .content 
+                    .header 项目1
+                    .description 
+                        span  智能硬件和数据分析俱乐部 通知概要 
+                        span.right.floated [2015-3-25]
+            .item
+                i.icon.triangle.right
+                .content 
+                    .header 项目2
+                    .description 智能硬件和数据分析俱乐部
+            .item
+                i.icon.triangle.right
+                .content 
+                    .header 项目3
+                    .description 智能硬件和数据分析俱乐部                 
+mixin introduces
+    .ui.segment#introduces
+        a.ui.ribbon.label.green.big 俱乐部简介
+        .description 智能硬件和数据分析俱乐部智能硬件和数据分析俱乐部智能硬件和数据分析俱乐部智能硬件和数据分析俱乐部智能硬件和数据分析俱乐部智能硬件和数据分析俱乐部智能硬件和数据分析俱乐部智能硬件和数据分析俱乐部
+mixin sign-up
+    .ui.segment#sign-up
+        a.ui.ribbon.label.green.big 报名
+        .ui.form
+            .ui.two.fields
+                +input-place('姓 名','请输入姓名','input-name')
+                +input-place('学 号','请输入学号','input-name')
+            .ui.two.fields
+                +input-place('学 院','请输入学院','input-name')
+                +input-place('专 业','请输入专业','input-name')
+            .ui.two.fields
+                +input-place('年 级','请输入年级','input-name')
+                +input-place('手 机','请输入手机','input-name')
+            .ui.two.fields
+                +input-place('邮 箱','请输入邮箱','input-name')
+                .ui.inline.field
+                    label 项 目
+                    select.ui.dropdown
+                        option(value='') 请选择项目
+                        option(value='1') 项目2
+                        option(value='2') 项目3
+                        option(value='3') 项目4    
+            .ui.field.inline
+                 label 上传简历
+                 input(type='file' title='请选择简历')
+            .ui.field
+                 .ui.button.blue.fluid 确定   
+
+
+mixin input-place(lable,placeholder,cls)
+  .inline.field(class=cls)
+    lable=lable
+    input(placeholder=placeholder,type='text')
+
+            

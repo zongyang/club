@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    title 智能硬件和数据分析俱乐部
+    link(rel='stylesheet', href='/bower_components/semantic-ui/dist/semantic.min.css')
+    link(rel='stylesheet', href='/stylesheets/bin/#{mokuai}.css')
+    script(type='text/javascript' src='/bower_components/jquery/dist/jquery.min.js')
+    script(type='text/javascript' src='/bower_components/semantic-ui/dist/semantic.min.js')
+    script(type='text/javascript' src='/javascripts/#{mokuai}.js')
+  body
+    .ui.piled.segment.green
+      .header
+        h1.ui.header 智能硬件和数据分析俱乐部
+        p The Club Of Intelligent HardWare And Data Analysis
+        .ui.breadcrumb#navigation
+          a.section 首页
+          i.right.chevron.icon.divider
+          a.section 报名页
+          i.right.chevron.icon.divider
+          a.section.active 详情页
+      .main
+        block content
+      .footer
+        //p The Club Of Intelligent HardWare And Data Analysis

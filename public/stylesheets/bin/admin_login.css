@@ -1,0 +1,35 @@
+body {
+  padding: 50px; }
+  body .clear {
+    clear: both; }
+  body #navigation {
+    margin: 0 0 15px 0; }
+  body #admin_tab {
+    margin-top: 30px;
+    width: 30%;
+    float: left; }
+  body #admin_content {
+    margin-top: 30px;
+    width: 68%;
+    float: right; }
+
+#admin_login #login-in, #admin_login #admin-modify {
+  width: 400px;
+  margin: 0 auto; }
+  #admin_login #login-in > div, #admin_login #admin-modify > div {
+    margin-top: 30px; }
+  #admin_login #login-in > div:first-child, #admin_login #admin-modify > div:first-child {
+    margin-top: 0; }
+#admin_login .buttons {
+  width: 80%;
+  margin: 30px auto 30px auto;
+  text-align: center; }
+  #admin_login .buttons > div {
+    display: inline-block;
+    width: 35%; }
+  #admin_login .buttons .ok {
+    float: left; }
+  #admin_login .buttons .reset {
+    float: right; }
+
+/*# sourceMappingURL=admin_login.css.map */
