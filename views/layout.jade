@@ -1,3 +1,15 @@
+mixin modal()
+    .ui.small.modal
+        i.close.icon
+        .header 
+           p 
+        .content 
+           p 
+        .actions
+            .ui.positive.button 确定
+            .ui.negative.button 取消
+
+
 doctype html
 html
   head
@@ -6,6 +18,7 @@ html
     link(rel='stylesheet', href='/#{mokuai}/#{mokuai}.css')
     script(type='text/javascript' src='/bower_components/jquery/dist/jquery.min.js')
     script(type='text/javascript' src='/bower_components/semantic-ui/dist/semantic.min.js')
+    script(type='text/javascript' src='/layout.js')
     script(type='text/javascript' src='/#{mokuai}/#{mokuai}.js')
   body
     .ui.piled.segment.green
@@ -22,3 +35,4 @@ html
         block content
       .footer
         //p The Club Of Intelligent HardWare And Data Analysis
+      +modal()
