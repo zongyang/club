@@ -1,0 +1,36 @@
+body {
+  padding: 50px; }
+  body .clear {
+    clear: both; }
+  body #navigation {
+    margin: 0 0 15px 0; }
+  body #admin_tab {
+    margin-top: 30px;
+    width: 25%;
+    float: left; }
+  body #admin_content {
+    margin-top: 30px;
+    width: 72%;
+    float: right; }
+
+#login, #pwd-modify {
+  width: 400px;
+  margin: 0 auto; }
+  #login > div, #pwd-modify > div {
+    margin-top: 30px; }
+  #login > div:first-child, #pwd-modify > div:first-child {
+    margin-top: 0; }
+
+.buttons {
+  width: 80%;
+  margin: 30px auto 30px auto;
+  text-align: center; }
+  .buttons > div {
+    display: inline-block;
+    width: 35%; }
+  .buttons .ok {
+    float: left; }
+  .buttons .reset {
+    float: right; }
+
+/*# sourceMappingURL=admin.css.map */

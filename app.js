@@ -4,11 +4,12 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var multer  = require('multer');
+//讲会话信息存储到数据库
 var session=require('express-session');
 var MongoStore=require('connect-mongo')(session);
 
 var routes = require('./routes/routes');
-var users = require('./routes/users');
 var settings=require('./settings');
 var flash=require('connect-flash');
 var app = express();
@@ -26,6 +27,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'views')));
+//文件上传的配置
+app.use(multer({
+  dest:settings.dest,
+  rename:function(fieldname,filename){//文件命名方式
+    var date=new Date();
+    //var formate=date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
+    //return fieldname+'-'+formate;
+    return fieldname;
+  },
+  limits:{
+    fileSize:settings.size
+  }
+}));
 //session
 app.use(session({
   secret:settings.cookieSecert,
@@ -40,7 +54,6 @@ app.use(session({
 
 
 app.use('/', routes);
-app.use('/users', users);
 
 
 // catch 404 and forward to error handler

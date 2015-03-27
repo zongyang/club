@@ -9,10 +9,30 @@ function init(){
 	$('#sign-up select').dropdown();
 	inputs=new Inputs();
 	$('#sign-up .submit').click(function(){
+		//测试文件上传
+		//fileUpload();
+		
 		if(inputs.check()){
 			submit();
 		}
 
+	});
+}
+//文件上传的操作
+function fileUpload(name){
+	var files=$('#sign-up .file input')[0].files;
+	var data=new FormData();
+	data.append(name,files[0]);
+	$.ajax({
+		type:'post',
+		url:'upload',
+		data:data,
+		contentType:false,
+		processData:false,
+		cache:false,
+		success:function(data){
+			console.log(data);
+		}
 	});
 }
 function submit(){
@@ -22,14 +42,15 @@ function submit(){
 		data:inputs.get(),
 		success:function(data){
 			if(!data.success){
-				debugger
 				msgAlert('提示',data.info);
 				return;
 			}
-			msgAlert('提示',data.info);
+			msgAlert('提示','报名成功！');
+			//上传文件
+			fileUpload(data.info);
 		},
 		error:function(err){
-			console.log(err);
+			msgAlert('提示',error);
 		}
 	});
 }
@@ -54,7 +75,7 @@ Inputs.prototype.get=function(){
 		"phone":this.phone.val(),
 		"email":this.email.val(),
 		"project":this.project.val(),
-		"file":this.file.val()
+		"file":this.file[0].files[0].name
 	}
 }
 Inputs.prototype.check=function(){
@@ -62,7 +83,6 @@ Inputs.prototype.check=function(){
 		msgAlert('提示','请正确填写姓名！');
 		return false;
 	}
-	return true;
 	if(this.no.val()==''){
 		msgAlert('提示','请正确填写学号！');
 		return false;

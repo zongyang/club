@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var index=require('./index.js');
-
+var admin=require('./admin.js');
 /* GET home page. */
 
 index(router);
-
+admin(router);
 
 router.get('/news', function(req, res, next) {
 	var mokuai='news';

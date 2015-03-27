@@ -1,0 +1,30 @@
+include ./login
+include ./users
+include ./pwd-modify
+extends ../layout
+
+
+block content
+    #admin_tab
+        +admin_menu()
+    #admin_content
+           //+login()
+           //+pwd-modify()
+           +users()
+    .clear
+
+//管理页 右侧菜单
+mixin admin_menu()
+    #admin_menu
+        .ui.vertical.menu
+            a.active.item 人员管理
+            a.item 消息管理
+            a.item 项目管理
+            a.item 俱乐部介绍
+            a.item 管理员密码修改
+            a.item 管理员登录
+//基本输入框
+mixin input-place(type,placeholder,icon,cls)
+    .ui.left.icon.input.fluid
+            input(type=type,placeholder=placeholder)
+            i.icon(class=icon,class=cls)

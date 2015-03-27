@@ -1,0 +1,9 @@
+mixin pwd-modify()
+    #pwd-modify
+        +input-place('password','输入原密码','keyboard','old_pwd')
+        +input-place('password','输入新密码','keyboard','new_pwd')
+        +input-place('password','密码确认','keyboard','again_pwd')
+        .buttons
+            .ui.button.green.ok 确 定
+            .ui.button.green.reset 取 消
+            .clear

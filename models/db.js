@@ -1,9 +1,11 @@
-var settings=require('../settings');
+var settings=require('../settings.js');
 var mongodb=require('mongodb');
-var DB=mongodb.Db;
-var Connection=mongodb.Connection;
-var Server=mongodb.Server;
+var monk=require('monk');
+var db=monk(getConstr(settings));
 
-var db=new DB(settings.db,new Server(settings.host,settings.port),{safe:true});
+
+function getConstr(settings){
+	return settings.host+':'+settings.port+'/'+settings.db;
+}
 
 module.exports=db;

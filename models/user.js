@@ -1,69 +1,59 @@
-var mongodb=require('./db');
+var db=require('./db.js');
+var settings=require('../settings.js');
 
 function User(user){
-	this.user=user;
-	for(var pro in user){
-		this[pro]=user[pro];
+	if(user){
+		user.file=settings.dest.substr(1)+'/'+user.name+getExet(user.file);
 	}
+	this.user=user;	
 }
-module.exports=User;
-User.prototype.dbName='users';
+//用户的collection
+User.prototype.collection=db.get('users');
 //存储用户信息
-User.prototype.save=function(callback){
-	var user=this.user;
-	var dbName=this.dbName;
-	//打开数据库
-	mongodb.open(function(err,db){
-		if(err){
-			return callback(err);
+User.prototype.insert=function(callback){
+	this.collection.insert(this.user,function(err,doc){
+		if (err) {
+			callback(err);
+			return;
 		}
-		//读取users集合
-		db.collection(dbName,function(err,collection){
-			if(err){
-				mongodb.close();
-				return callback(err);
-			}
-			//插入数据
-			collection.insert(user,{
-				safe:true
-			},function(err,user){
-				mongodb.close();
-				if(err){
-					return callback(err);
-				}
-				callback(null,user.ops[0]);//成功！err为null，并返回存储后的用户文档
-			})
-		})
-	});
+		callback(null,doc);
+	})
 };
-//读取用户信息
-User.prototype.get=function(name,callback){
-	var dbName=this.dbName;
-	mongodb.open(function(err,db){
+//读取所有用户信息
+User.prototype.find=function(obj,callback){
+	this.collection.find(obj,function(err,docs){
 		if(err){
-			return callback(err);
+			callback(err,null);
+			return;
 		}
-		db.collection(dbName,function(err,collection){
-			if(err){
-				mongodb.close();
-				return callback(err);
-			}
-			collection.findOne({name:name},function(err,user){
-				mongodb.close();
-				if (err) {
-					return callback(err);
-				}
-				callback(null,user);//成功
-			});
-		});
+		callback(null,docs);
+	})
+}
+//读取一条用户信息
+User.prototype.findOne=function(obj,callback){
+	this.collection.findOne(obj).on('success',function(doc){
+		callback(doc);
 	});
 }
+//更新操作
+User.prototype.update=function(src,dst,callback){
+	this.collection.update(src,dst,function(){
+		if(callback)
+			callback()
+	});
+}
+
 //检验(现在只做空值的检查)
 User.prototype.check=function(){
-	for(var pro in this){
-		if(this[pro]===''){
+	for(var pro in this.user){
+		if(this.user[pro]===''){
 			return pro;
 		}
 	}
 	return null;
 }
+function getExet(str){
+	return str.substr(str.lastIndexOf('.'));
+}
+
+module.exports=User;
