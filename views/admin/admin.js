@@ -6,14 +6,17 @@ function init(){
 	if($('#users').length>0){
 		initUsers();
 	}
+	if($('#projects').length>0){
+		initProjects();
+	}
 }
 
 function initUsers(){
-	return;
-	var links=$('#users .resume');
-	var pre=window.location.protocol+'//'+window.location.host;
-	links.each(function(index,el){
-		var old=$(el).attr('href');
-		$(el).attr('href',pre+old);
+	
+}
+function initProjects(){
+	$('#projects .modal').modal();
+	$('#projects table i.edit').click(function(){
+		$('.projects.modal').modal('show');
 	});
 }

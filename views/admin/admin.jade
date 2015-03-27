@@ -1,5 +1,6 @@
-include ./login
 include ./users
+include ./projects
+include ./login
 include ./pwd-modify
 extends ../layout
 
@@ -10,7 +11,8 @@ block content
     #admin_content
            //+login()
            //+pwd-modify()
-           +users()
+           //+users()
+           +projects()
     .clear
 
 //管理页 右侧菜单
@@ -18,8 +20,8 @@ mixin admin_menu()
     #admin_menu
         .ui.vertical.menu
             a.active.item 人员管理
-            a.item 消息管理
             a.item 项目管理
+            a.item 消息管理
             a.item 俱乐部介绍
             a.item 管理员密码修改
             a.item 管理员登录

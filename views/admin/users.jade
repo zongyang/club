@@ -10,6 +10,7 @@ mixin users()
              th 手机
              th 邮箱
              th 简历
+             th
         tbody
           each user in users
             tr
@@ -21,3 +22,6 @@ mixin users()
                 td #{user.email}
                 td
                    a.resume(href='#{downpre}?path=#{user.file}') 简历
+                td
+                   i.close.icon
+                   i.edit.icon
