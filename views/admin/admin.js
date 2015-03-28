@@ -1,83 +1,121 @@
-$(function(){
+$(function() {
 	init();
 })
 
-function init(){
-	if($('#users').length>0){
+function init() {
+	if ($('#users').length > 0) {
 		initUsers();
 	}
-	if($('#projects').length>0){
+	if ($('#projects').length > 0) {
 		initProjects();
 	}
 }
+
 //初始化人员列表
-function initUsers(){
-	
+function initUsers() {
+
 }
+
 //初始化项目列表
-function initProjects(){
+function initProjects() {
 	proEditAlert().init();
 	//编辑
-	$('#projects table i.edit').click(function(){
-		proEditAlert().show();
+	$('#projects table i.edit').click(function() {
+		//var modal = proEditAlert();
+		//modal.init(editPro);
 	});
 	//添加
-	$('#projects .add').click(function(){
-		proEditAlert().show('添加新项目');
-	})
+	$('#projects .add').click(function() {
+		var modal = proEditAlert();
+		modal.init(editPro);
+		modal.show('添加新项目');
+	});
 }
 
-//项目编辑弹出层
-function proEditAlert(onApprove,onDeny){
-	return {
-		self:$('.projects.modal'),
-		init:function(onApprove,onDeny){
-			this.self.modal({
-				onApprove:function(){
-					if(onApprove)
-						onApprove();
-				},
-				onDeny:function(){
-					if(onDeny)
-						onDeny()
+function editPro() {
+	var obj = proEditAlert().get();
+	if (obj.name == '') {
+		msgAlert('提示', '项目名不能为空！');
+		return;
+	}
+	$.ajax({
+		url: 'projects/add',
+		data: obj,
+		type: 'post',
+		success: function(data) {
+			msgAlert('提示', data.info);
+			if (!data.success) {
+				return;
+			}
+
+			var tbody = $('#projects tbody');
+			var tr='<tr>';
+			//添加一行
+			for(var pro in obj){
+				if(pro!=='content'){
+					tr+='<td>'+obj[pro]+'</td>';
 				}
+				else{
+					tr+='<td class="hidden">'+obj[pro]+'</td>';
+				}
+			}
+			tr+='<td><i class="close icon"></i><i class="edit icon"></i></td>';
+			tr+='</tr>';
+			
+			tbody.append(tr);
+
+		}
+	});
+}
+//项目编辑弹出层
+function proEditAlert() {
+	var modal = $('.projects.modal');
+	return {
+		self: modal,
+		init: function(onApprove, onDeny) {
+			var that = this;
+			modal.modal({
+				onApprove: onApprove,
+				onDeny: onDeny
 			});
 		},
-		show:function(title,name,peoples,info,content){
-			var form=this.self;
-			var obj={
-				title:form.find('.title'),
-				name:form.find('.name input'),
-				peoples:form.find('.peoples input'),
-				info:form.find('.info input'),
-				content:form.find('.content textarea')
-			}
+		title: modal.find('.title'),
+		name: modal.find('.name input'),
+		peoples: modal.find('.peoples input'),
+		info: modal.find('.info input'),
+		content: modal.find('.content textarea'),
+		show: function(title, name, peoples, info, content) {
 			//初始化
-			obj.title.text('');
-			obj.name.val('');
-			obj.peoples.val('');
-			obj.info.val('');
-			obj.content.val('');
+			this.title.text('');
+			this.name.val('');
+			this.peoples.val('');
+			this.info.val('');
+			this.content.val('');
 
-			if(title){
-				obj.title.text(title);
+			if (title) {
+				this.title.text(title);
 			}
-			if(name){
-				obj.name.val(name);
+			if (name) {
+				this.name.val(name);
 			}
-			if(peoples){
-				obj.peoples.val(peoples);
+			if (peoples) {
+				this.peoples.val(peoples);
 			}
-			if(info){
-				obj.info.val(info);
+			if (info) {
+				this.info.val(info);
 			}
-			if(content){
-				obj.content.val(content);
+			if (content) {
+				this.content.val(content);
 			}
-
-			form.modal('show');
+			this.self.modal('show');
+		},
+		get: function() {
+			return {
+				name: this.name.val(),
+				peoples: this.peoples.val(),
+				info: this.info.val(),
+				content: this.content.val()
+			}
 		}
 	}
 }
-
-

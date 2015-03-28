@@ -8,12 +8,18 @@ mixin projects()
              th 项目
              th 项目人员
              th 简介
+             th
              //详细内容隐藏 
         tbody
-            tr
-                td
-                   i.close.icon
-                   i.edit.icon
+            each project in projects 
+                tr
+                    td #{project.name}
+                    td #{project.peoples}
+                    td #{project.info}
+                    td.hidden #{project.content}
+                    td
+                       i.close.icon
+                       i.edit.icon
 
 
 

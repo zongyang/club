@@ -2,6 +2,8 @@ body {
   padding: 50px; }
   body .clear {
     clear: both; }
+  body .hidden {
+    display: none; }
   body #navigation {
     margin: 0 0 15px 0; }
   body #admin_tab {

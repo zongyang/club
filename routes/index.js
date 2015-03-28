@@ -17,7 +17,7 @@ function index(router) {
        	 return;
        }
        //检测用户是否已存在
-       user.findOne({name:user.user.name},function(doc){
+       user.findOne({name:user.obj.name},function(doc){
         if(doc!=null){
           res.send({success:false,info:'报名失败：改用户已存在！'});
           return;
