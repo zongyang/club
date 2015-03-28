@@ -17,6 +17,10 @@ function admin(router) {
         var path='admin/admin';
         res.render(path, {mokuai:mokuai});
     });
+    //项目的添加
+    router.get('/admin/projects/add',function(req, res, next) {
+        res.send({success:true,info:'添加成功！'});
+    });
     //文件下载(在windons路径可能会有问题)
     router.get('/admin/users/download',function(req,res,next){
         var path=process.cwd()+req.query.path;

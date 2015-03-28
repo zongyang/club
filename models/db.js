@@ -4,6 +4,7 @@ var monk=require('monk');
 var db=monk(getConstr(settings));
 
 
+
 function getConstr(settings){
 	return settings.host+':'+settings.port+'/'+settings.db;
 }

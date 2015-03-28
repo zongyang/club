@@ -1,6 +1,7 @@
 mixin projects()
    #projects
       +proEdit()
+      .ui.button.green.add 添加
       table.ui.celled.striped.table
         thead
           tr 
@@ -21,20 +22,20 @@ mixin proEdit()
     .ui.fullscreen.modal.projects
         i.close.icon
         .header
-            p 标题
+            p.title 标题
         .content
             .ui.form
                 .ui.two.fields
-                    .field
+                    .field.name
                         lable 项目
                         input(type='text')
-                    .field
+                    .field.peoples
                         lable 参与人员
                         input(type='text')
-                .field
+                .field.info
                     lable 简介
                     input(type='text')
-                .field
+                .field.content
                     lable 详细内容
                     textarea
         .actions
