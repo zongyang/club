@@ -5,8 +5,7 @@ mixin news()
       table.ui.sortable.celled.striped.table
         thead
           tr 
-             th 消息标题
-             th 作者
+             th 消息名
              th 简介
              th 日期
              th
@@ -14,13 +13,13 @@ mixin news()
         tbody
             each news in newslist 
                 tr
-                    td.title #{news.title}
+                    td.name #{news.name}
                     td.info #{news.info}
-                    th.content #{news.content}
+                    td.date #{news.date}
                     td
                        i.close.icon
                        i.edit.icon
-                    td.hidden.content #{news.date}
+                    td.hidden.content #{news.content}
                     td.hidden.id #{news._id}
 
 
@@ -29,14 +28,18 @@ mixin newsEdit()
     .ui.fullscreen.modal.news
         i.close.icon
         .header
-            p.title 消息标题
+            p.title 
         .content
             .ui.form
-                .field
+                .ui.two.fields
+                  .field.name
+                      lable 消息标题
+                      input(type='text')
+                  .field.info
+                      lable 简介
+                      input(type='text')
+                .field.date
                   p 日期
-                .field.info
-                    lable 简介
-                    input(type='text')
                 .field.content
                     lable 详细内容
                     textarea

@@ -33,12 +33,12 @@ var router_news = function(router) {
 		}
 		//修改
 
-		/*news.findAndModify({
+		news.findAndModify({
 			_id: obj.id
 		}, {
 			$set: {
 				name: obj.name,
-				peoples: obj.peoples,
+				date: obj.date,
 				info: obj.info,
 				content: obj.content
 			}
@@ -47,11 +47,13 @@ var router_news = function(router) {
 				success: true,
 				info: '修改成功!'
 			});
-		});*/
+		});
 	});
 	//添加
 	router.post('/admin/news/add', function(req, res, next) {
 		var news = new News(req.body);
+		news.obj.date=common.getDate();
+		console.log(news);
 		//检测
 		var result = news.check();
 		if (!result.success) {
@@ -74,16 +76,18 @@ var router_news = function(router) {
 			res.send({
 				success: true,
 				info: '消息添加成功！',
-				id: doc._id
+				id: doc._id,
+				date:doc.date
 			});
 		});
 
 	});
 
 	//删除
-	router.post('/admin/news/delete', function(req, res, next) {
+	router.post('/admin/news/del', function(req, res, next) {
 		var news = new News();
 		var id = req.body.id;
+		console.log(id);
 		news.remove({
 			'_id': id
 		}, function(err) {

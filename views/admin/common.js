@@ -9,5 +9,8 @@ function init() {
 	if ($('#projects').length > 0) {
 		initProjects();
 	}
+	if($('#news').length>0){
+		initNews();
+	}
 	$('table').tablesort();
 }
