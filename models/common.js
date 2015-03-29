@@ -30,6 +30,11 @@ var common = {
             function() {
                 if (callback) callback()
             });
+    },
+    remove:function(obj,callback){
+        this.collection.remove(obj,function(err){
+            callback(err);
+        });
     }
 }
 module.exports = common;

@@ -17,7 +17,7 @@ User.prototype.find=common.find;
 User.prototype.findOne=common.findOne;
 //更新操作
 User.prototype.update=common.update;
-
+User.prototype.remove=common.remove;
 //检验(现在只做空值的检查)
 User.prototype.check=function(){
 	for(var pro in this.obj){

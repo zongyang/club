@@ -1,5 +1,6 @@
-include ./users
-include ./projects
+include ./user
+include ./project
+include ./news
 include ./login
 include ./pwd-modify
 extends ../layout
@@ -13,6 +14,9 @@ block content
         +users()
       if page.projects
         +projects()
+      if page.news
+        +news()
+
            //+login()
            //+pwd-modify()
     .clear
@@ -29,8 +33,11 @@ mixin admin_menu()
             a.active.item(href='projects') 项目管理
           else
             a.item(href='projects') 项目管理
-
-          a.item 消息管理
+          if page.news
+            a.active.item(href='news') 消息管理
+          else
+            a.item(href='news') 消息管理
+            
           a.item 俱乐部介绍
           a.item 管理员密码修改
           a.item 管理员登录

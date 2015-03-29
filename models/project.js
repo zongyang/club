@@ -13,7 +13,7 @@ Project.prototype.find=common.find;
 Project.prototype.findOne=common.findOne;
 //项目更新操作
 Project.prototype.findAndModify=common.findAndModify;
-
+Project.prototype.remove=common.remove;
 //检验
 Project.prototype.check=function(){
 	if(this.obj.name==''){

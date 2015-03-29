@@ -6,7 +6,14 @@ module.exports = function(grunt) {
 
     //文件头注释
     banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
-      '<%= grunt.template.today("yyyy-mm-dd") %>\n' ,
+      '<%= grunt.template.today("yyyy-mm-dd") %>\n',
+    concat: {
+      dist: {
+        //src: ['views/admin/common.js', 'views/admin/user.js', 'views/admin/project.js', 'views/admin/news.js'],
+        src:['views/admin/**/*.js','!views/admin/admin.js'],
+        dest: 'views/admin/admin.js'
+      }
+    },
     sass: {
       dist: {
         files: [{
@@ -21,15 +28,18 @@ module.exports = function(grunt) {
     watch: {
       scripts: {
         files: [
-          '**/*.sass'
+          '**/*.sass',
+          'views/admin/*.js',
+          '!views/admin/admin.js'
         ],
-        tasks: ['sass']
+        tasks: ['sass','concat']
       }
     }
   });
   // 加载
   grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
   // 默认任务
-  grunt.registerTask('default', ['sass']);
+  grunt.registerTask('default', ['sass', 'concat']);
 }

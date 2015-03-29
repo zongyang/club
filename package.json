@@ -18,6 +18,7 @@
     "connect-flash": "^0.1.1",
     "connect-mongo": "^0.8.0",
     "express-session": "^1.10.4",
+    "grunt-contrib-concat": "^0.5.1",
     "mongodb": "^2.0.24",
     "monk": "^1.0.1",
     "multer": "^0.1.8"

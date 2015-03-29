@@ -2,7 +2,6 @@ var inputs;
 
 $(function() {
 	init();
-	initMsgAlert();
 })
 
 function init() {
