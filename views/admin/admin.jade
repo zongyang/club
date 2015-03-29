@@ -9,22 +9,31 @@ block content
     #admin_tab
         +admin_menu()
     #admin_content
+      if page.users
+        +users()
+      if page.projects
+        +projects()
            //+login()
            //+pwd-modify()
-           //+users()
-           +projects()
     .clear
 
 //管理页 右侧菜单
 mixin admin_menu()
     #admin_menu
         .ui.vertical.menu
-            a.active.item 人员管理
-            a.item 项目管理
-            a.item 消息管理
-            a.item 俱乐部介绍
-            a.item 管理员密码修改
-            a.item 管理员登录
+          if page.users
+            a.active.item(href='users') 人员管理
+          else
+            a.item(href='users') 人员管理
+          if page.projects
+            a.active.item(href='projects') 项目管理
+          else
+            a.item(href='projects') 项目管理
+
+          a.item 消息管理
+          a.item 俱乐部介绍
+          a.item 管理员密码修改
+          a.item 管理员登录
 //基本输入框
 mixin input-place(type,placeholder,icon,cls)
     .ui.left.icon.input.fluid

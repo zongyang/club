@@ -12,7 +12,7 @@ Project.prototype.find=common.find;
 //读取项目信息
 Project.prototype.findOne=common.findOne;
 //项目更新操作
-Project.prototype.update=common.update;
+Project.prototype.findAndModify=common.findAndModify;
 
 //检验
 Project.prototype.check=function(){

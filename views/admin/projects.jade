@@ -2,7 +2,7 @@ mixin projects()
    #projects
       +proEdit()
       .ui.button.green.add 添加
-      table.ui.celled.striped.table
+      table.ui.sortable.celled.striped.table
         thead
           tr 
              th 项目
@@ -13,10 +13,11 @@ mixin projects()
         tbody
             each project in projects 
                 tr
-                    td #{project.name}
-                    td #{project.peoples}
-                    td #{project.info}
-                    td.hidden #{project.content}
+                    td.name #{project.name}
+                    td.hidden.id #{project._id}
+                    td.peoples #{project.peoples}
+                    td.info #{project.info}
+                    td.hidden.content #{project.content}
                     td
                        i.close.icon
                        i.edit.icon

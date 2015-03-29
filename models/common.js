@@ -25,8 +25,8 @@ var common = {
                 callback(doc);
             });
     },
-    update: function(src, dst, callback) {
-        this.collection.update(src, dst,
+    findAndModify: function(src, dst, callback) {
+        this.collection.findAndModify(src, dst,
             function() {
                 if (callback) callback()
             });
