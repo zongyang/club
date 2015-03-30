@@ -1,5 +1,6 @@
 var db=require('./db.js');
 var common=require('./common.js');
+var common1=require('../routes/common.js');
 function Introduce(intr){
 	this.obj=intr;
 }

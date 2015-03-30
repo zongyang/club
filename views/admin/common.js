@@ -15,5 +15,8 @@ function init() {
 	if($('#introduce').length>0){
 		initIntroduce();
 	}
+	if($('#login').length>0){
+		initLogin();
+	}
 	$('table').tablesort();
 }

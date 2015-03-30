@@ -1,6 +1,6 @@
 var db=require('./db.js');
 var common=require('./common.js');
-
+var common1=require('../routes/common.js');
 function User(user){
 	if(user){
 		user.file=settings.dest.substr(1)+'/'+user.name+getExet(user.file);
@@ -21,7 +21,7 @@ User.prototype.remove=common.remove;
 //检验(现在只做空值的检查)
 User.prototype.check=function(){
 	for(var pro in this.obj){
-		if(this.obj[pro]===''){
+		if(common1.isEmpty(this.obj[pro])){
 			return pro;
 		}
 	}

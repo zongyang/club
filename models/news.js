@@ -1,5 +1,6 @@
 var db=require('./db.js');
 var common=require('./common.js');
+var common1=require('../routes/common.js');
 function News(news){
 	this.obj=news;
 }
@@ -16,7 +17,7 @@ News.prototype.findAndModify=common.findAndModify;
 News.prototype.remove=common.remove;
 //检验
 News.prototype.check=function(){
-	if(this.obj.title==''){
+	if(common1.isEmpty(this.obj.title)){
 		return {success:false,info:'消息名不能为空'};
 	}
 	return {success:true,info:''};

@@ -52,13 +52,13 @@ mixin sign-up
                 +input-place('手 机','请输入手机','phone')
             .ui.two.fields
                 +input-place('邮 箱','请输入邮箱','email')
-                .ui.inline.field.project
+                .ui.field.project
                     label 项 目
                     select.ui.dropdown
                         option(value='') 请选择项目
                         each project in projects
                             option(value='#{project.name}') #{project.name}
-            .ui.field.inline.file
+            .ui.field.file
                  label 上传简历（最大10MB）
                  input(type='file' title='请选择简历')
             .ui.field
@@ -66,7 +66,7 @@ mixin sign-up
 
 
 mixin input-place(lable,placeholder,cls)
-  .inline.field(class=cls)
+  .field(class=cls)
     lable=lable
     input(placeholder=placeholder,type='text')
 

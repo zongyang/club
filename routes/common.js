@@ -4,7 +4,8 @@ var common = {
 			users: false,
 			projects: false,
 			news: false,
-			introduce:false
+			introduce: false,
+			login: false
 		}
 	},
 	getDate: function() {
@@ -16,6 +17,16 @@ var common = {
 		month = date.getMonth() + 1;
 		day = date.getDate();
 		return year + '-' + month + '-' + day;
+
+	},
+	isEmpty:function(str){
+		if(str==null){
+			return true;
+		}
+		if(str.trim()==''){
+			return true;
+		}
+		return false;
 
 	}
 };

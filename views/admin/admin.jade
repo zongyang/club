@@ -19,7 +19,8 @@ block content
         +news()
       if page.introduce
         +introduce()
-
+      if page.login
+        +login()
            //+login()
            //+pwd-modify()
     .clear
@@ -44,11 +45,14 @@ mixin admin_menu()
             a.active.item(href='introduce') 俱乐部简介修改
           else
             a.item(href='introduce') 俱乐部简介修改
-     
+
           a.item 管理员密码修改
-          a.item 管理员登录
+          if page.login
+            a.active.item(href='./') 管理员登录
+          else
+            a.item(href='./') 管理员登录
 //基本输入框
 mixin input-place(type,placeholder,icon,cls)
     .ui.left.icon.input.fluid
-            input(type=type,placeholder=placeholder)
-            i.icon(class=icon,class=cls)
+            input(class=cls,type=type,placeholder=placeholder)
+            i.icon(class=icon)

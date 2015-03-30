@@ -1,5 +1,6 @@
 var db=require('./db.js');
 var common=require('./common.js');
+var common1=require('../routes/common.js');
 function Project(project){
 	this.obj=project;	
 }
@@ -16,7 +17,7 @@ Project.prototype.findAndModify=common.findAndModify;
 Project.prototype.remove=common.remove;
 //检验
 Project.prototype.check=function(){
-	if(this.obj.name==''){
+	if(common1.isEmpty(this.obj.name)){
 		return {success:false,info:'项目名不能为空！'};
 	}
 	return {success:true,info:''};
