@@ -1,6 +1,7 @@
 include ./user
 include ./project
 include ./news
+include ./introduce
 include ./login
 include ./pwd-modify
 extends ../layout
@@ -16,6 +17,8 @@ block content
         +projects()
       if page.news
         +news()
+      if page.introduce
+        +introduce()
 
            //+login()
            //+pwd-modify()
@@ -37,8 +40,11 @@ mixin admin_menu()
             a.active.item(href='news') 消息管理
           else
             a.item(href='news') 消息管理
-            
-          a.item 俱乐部介绍
+          if page.introduce
+            a.active.item(href='introduce') 俱乐部简介修改
+          else
+            a.item(href='introduce') 俱乐部简介修改
+     
           a.item 管理员密码修改
           a.item 管理员登录
 //基本输入框

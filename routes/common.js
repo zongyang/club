@@ -3,7 +3,8 @@ var common = {
 		return {
 			users: false,
 			projects: false,
-			news: false
+			news: false,
+			introduce:false
 		}
 	},
 	getDate: function() {

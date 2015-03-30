@@ -23,6 +23,26 @@ function router_user(router) {
 		})
 	});
 
+	//删除
+	router.post('/admin/users/delete', function(req, res, next) {
+		var user = new User();
+		var id = req.body.id;
+		user.remove({
+			'_id': id
+		}, function(err) {
+			if (err) {
+				res.send({
+					success: false,
+					info: err
+				});
+				return;
+			}
+			res.send({
+				success: true,
+				info: '用户删除成功！'
+			});
+		});
+	});
 	//文件下载(在windons路径可能会有问题)
 	router.get('/admin/users/download', function(req, res, next) {
 		var path = process.cwd() + req.query.path;

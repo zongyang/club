@@ -12,5 +12,8 @@ function init() {
 	if($('#news').length>0){
 		initNews();
 	}
+	if($('#introduce').length>0){
+		initIntroduce();
+	}
 	$('table').tablesort();
 }

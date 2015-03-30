@@ -13,48 +13,30 @@ mixin news
     .ui.segment#news
         a.ui.ribbon.label.green.big 新闻
         .ui.animated.divided.list
-            .item
-                i.icon.triangle.right
-                .content 
-                    .header #{title}
-                    .description 
-                        span  智能硬件和数据分析俱乐部 通知概要 
-                        span.right.floated [2015-3-25]
-            .item
-                i.icon.triangle.right
-                .content 
-                    .header #{title}
-                    .description 智能硬件和数据分析俱乐部
-            .item
-                i.icon.triangle.right
-                .content 
-                    .header #{title}
-                    .description 智能硬件和数据分析俱乐部 
+            each news in newsList
+                .item
+                    i.icon.triangle.right
+                    .content 
+                        .header #{news.name}
+                        .description 
+                            span  #{news.info}
+                            span.right.floated [#{news.date}]
+                            span.id.hidden #{news.id}
 mixin projects
     .ui.segment#project
         a.ui.ribbon.label.green.big 项目
         .ui.animated.divided.list
-            .item
-                i.icon.triangle.right
-                .content 
-                    .header 项目1
-                    .description 
-                        span  智能硬件和数据分析俱乐部 通知概要 
-                        span.right.floated [2015-3-25]
-            .item
-                i.icon.triangle.right
-                .content 
-                    .header 项目2
-                    .description 智能硬件和数据分析俱乐部
-            .item
-                i.icon.triangle.right
-                .content 
-                    .header 项目3
-                    .description 智能硬件和数据分析俱乐部                 
+            each project in projects
+                .item
+                    i.icon.triangle.right
+                    .content 
+                        .header #{project.name}
+                        .description 
+                            span  #{project.info}              
 mixin introduces
     .ui.segment#introduces
         a.ui.ribbon.label.green.big 俱乐部简介
-        .description 智能硬件和数据分析俱乐部智能硬件和数据分析俱乐部智能硬件和数据分析俱乐部智能硬件和数据分析俱乐部智能硬件和数据分析俱乐部智能硬件和数据分析俱乐部智能硬件和数据分析俱乐部智能硬件和数据分析俱乐部
+        .description #{introduce.info}
 mixin sign-up
     .ui.segment#sign-up
         a.ui.ribbon.label.green.big 报名
@@ -74,9 +56,8 @@ mixin sign-up
                     label 项 目
                     select.ui.dropdown
                         option(value='') 请选择项目
-                        option(value='1') 项目2
-                        option(value='2') 项目3
-                        option(value='3') 项目4    
+                        each project in projects
+                            option(value='#{project.name}') #{project.name}
             .ui.field.inline.file
                  label 上传简历（最大10MB）
                  input(type='file' title='请选择简历')

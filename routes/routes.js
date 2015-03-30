@@ -4,12 +4,14 @@ var index=require('./index.js');
 var user=require('./admin/user.js');
 var project=require('./admin/project.js');
 var news=require('./admin/news.js');
+var introduce=require('./admin/introduce.js');
 /* GET home page. */
 
 index(router);
 project(router);
 user(router);
 news(router);
+introduce(router);
 
 router.get('/news', function(req, res, next) {
 	var mokuai='news';
