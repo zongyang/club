@@ -17,7 +17,7 @@ News.prototype.findAndModify=common.findAndModify;
 News.prototype.remove=common.remove;
 //检验
 News.prototype.check=function(){
-	if(common1.isEmpty(this.obj.title)){
+	if(common1.isEmpty(this.obj.name)){
 		return {success:false,info:'消息名不能为空'};
 	}
 	return {success:true,info:''};

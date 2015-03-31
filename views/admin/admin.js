@@ -253,7 +253,7 @@ function getNewsFromMo() {
 	var modal = $('.news.modal');
 	obj.name = modal.find('.name input').val();
 	obj.info = modal.find('.info input').val();
-	obj.content = modal.find('.content input').val();
+	obj.content = modal.find('.content textarea').val();
 	return obj;
 }
 

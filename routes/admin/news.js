@@ -53,7 +53,6 @@ var router_news = function(router) {
 	router.post('/admin/news/add', function(req, res, next) {
 		var news = new News(req.body);
 		news.obj.date=common.getDate();
-		console.log(news);
 		//检测
 		var result = news.check();
 		if (!result.success) {

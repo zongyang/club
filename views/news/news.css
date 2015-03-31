@@ -21,7 +21,7 @@ body {
     float: right; }
 
 #news {
-  margin: 0 50px 50px 50px; }
+  margin: 0 15px 50px 15px; }
   #news .author-date {
     text-align: right; }
   #news .content {

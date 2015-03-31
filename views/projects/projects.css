@@ -21,7 +21,7 @@ body {
     float: right; }
 
 #projects {
-  margin: 0 50px 50px 50px; }
+  margin: 0 15px 50px 15px; }
   #projects .author-date {
     text-align: right; }
   #projects .content {

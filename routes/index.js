@@ -82,5 +82,43 @@ function index(router) {
     }
     res.send('上传完毕');
   });
+
+
+  router.get('/index/news', function(req, res, next) {
+    var mokuai = 'news';
+    var id = req.query.id;
+
+    (new News).findOne({
+      _id: id
+    }, function(doc) {
+      if (doc == null) {
+        doc = {};
+      };
+      console.log(doc)
+      res.render('news/news', {
+        mokuai: mokuai,
+        news: doc
+      });
+    });
+
+  });
+
+  router.get('/index/projects', function(req, res, next) {
+    var mokuai = 'projects';
+    var id = req.query.id;
+
+    (new Project).findOne({
+      _id: id
+    }, function(doc) {
+      if (doc == null) {
+        doc = null
+      }
+      res.render('projects/projects', {
+        mokuai: mokuai,
+        project: doc
+      });
+    })
+
+  });
 }
 module.exports = index;

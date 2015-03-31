@@ -16,12 +16,12 @@ mixin news
             each news in newsList
                 .item
                     i.icon.triangle.right
-                    .content 
+                    a.content(href='news?id=#{news._id}',target='_blank') 
                         .header #{news.name}
                         .description 
                             span  #{news.info}
                             span.right.floated [#{news.date}]
-                            span.id.hidden #{news.id}
+                            span.id.hidden #{news._id}
 mixin projects
     .ui.segment#project
         a.ui.ribbon.label.green.big 项目
@@ -29,7 +29,7 @@ mixin projects
             each project in projects
                 .item
                     i.icon.triangle.right
-                    .content 
+                    a.content(href='projects?id=#{project._id}',target='_blank') 
                         .header #{project.name}
                         .description 
                             span  #{project.info}              
