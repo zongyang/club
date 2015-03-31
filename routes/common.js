@@ -5,7 +5,8 @@ var common = {
 			projects: false,
 			news: false,
 			introduce: false,
-			login: false
+			login: false,
+			modify:false
 		}
 	},
 	getDate: function() {

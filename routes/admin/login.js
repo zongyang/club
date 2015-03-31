@@ -3,7 +3,7 @@ var Login = require('../../models/login');
 
 
 
-var router_introduce = function(router) {
+var router_login = function(router) {
 	//管理员登录页
 	router.get('/admin', function(req, res, next) {
 		var mokuai = 'admin';
@@ -49,7 +49,7 @@ var router_introduce = function(router) {
 				});
 				return;
 			}
-			req.session.user = login.obj.name; //记住登录状态
+			req.session.user = doc._id; //记住登录状态
 			res.send({
 				success: true,
 				info: '登录成功!'
@@ -58,10 +58,26 @@ var router_introduce = function(router) {
 		});
 
 	});
+
 	//注销
 	router.post('/admin/logout', function(req, res, next) {
-		req.session.user=null;
-		res.send({success:true,info:'注销成功！'});
+		if(req.session.user==null){
+			res.send({
+			success: false,
+			info: '未登录，无需注销！'
+		});
+		}
+		req.session.user = null;
+		res.send({
+			success: true,
+			info: '注销成功！'
+		});
 	});
+
+	
+	
+
+
 }
-module.exports = router_introduce;
+
+module.exports = router_login;

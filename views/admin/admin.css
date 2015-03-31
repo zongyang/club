@@ -20,13 +20,16 @@ body {
     min-width: 500px;
     float: right; }
 
-#login, #pwd-modify {
+#login {
   width: 400px;
   margin: 0 auto; }
-  #login > div > div, #pwd-modify > div > div {
+  #login > div > div {
     margin-top: 30px; }
-  #login > div > div:first-child, #pwd-modify > div > div:first-child {
+  #login > div > div:first-child {
     margin-top: 0; }
+
+#modify .input {
+  margin-top: 20px; }
 
 .buttons {
   width: 80%;

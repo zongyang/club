@@ -3,6 +3,7 @@ var project = require('./project.js');
 var news = require('./news.js');
 var introduce = require('./introduce.js');
 var login = require('./login.js');
+var modify=require('./modify');
 
 
 var admin_introduce = function(router) {
@@ -20,6 +21,7 @@ var admin_introduce = function(router) {
 	user(router);
 	news(router);
 	introduce(router);
+	modify(router);
 	
 }
 

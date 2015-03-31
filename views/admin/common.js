@@ -18,5 +18,8 @@ function init() {
 	if($('#login').length>0){
 		initLogin();
 	}
+	if($('#modify').length>0){
+		initModify();
+	}
 	$('table').tablesort();
 }

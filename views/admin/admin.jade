@@ -3,7 +3,7 @@ include ./project
 include ./news
 include ./introduce
 include ./login
-include ./pwd-modify
+include ./modify
 extends ../layout
 
 
@@ -19,10 +19,10 @@ block content
         +news()
       if page.introduce
         +introduce()
+      if page.modify
+        +modify()
       if page.login
         +login()
-           //+login()
-           //+pwd-modify()
     .clear
 
 //管理页 右侧菜单
@@ -45,8 +45,10 @@ mixin admin_menu()
             a.active.item(href='introduce') 俱乐部简介修改
           else
             a.item(href='introduce') 俱乐部简介修改
-
-          a.item 管理员密码修改
+          if page.modify
+            a.active.item(href='modify') 管理员密码修改
+          else
+            a.item(href='modify') 管理员密码修改
           if page.login
             a.active.item(href='./') 管理员登录
           else
