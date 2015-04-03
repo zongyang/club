@@ -50,7 +50,7 @@ function submit() {
 			fileUpload(data.info);
 		},
 		error: function(err) {
-			msgAlert('提示', error);
+			msgAlert('提示', err);
 		}
 	});
 }

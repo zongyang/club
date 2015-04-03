@@ -13,3 +13,5 @@ function checkEmail(str){
 	var reg=new RegExp(/^\w+@\w+\.\w+$/);
 	return reg.test(str);
 }
+
+

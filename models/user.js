@@ -1,6 +1,7 @@
 var db=require('./db.js');
 var common=require('./common.js');
 var common1=require('../routes/common.js');
+var settings=require('../settings.js');
 function User(user){
 	if(user){
 		user.file=settings.dest.substr(1)+'/'+user.name+getExet(user.file);
