@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var multer  = require('multer');
-//讲会话信息存储到数据库
+//会话信息存储到数据库
 var session=require('express-session');
 var MongoStore=require('connect-mongo')(session);
 
@@ -44,11 +44,10 @@ app.use(multer({
 app.use(session({
   secret:settings.cookieSecert,
   key:settings.db, //cookie name
-  cookie:{maxAge:1000*60*60*24*30},//30days
+  cookie:{maxAge:1000*60*60*2},//2hours
   store:new MongoStore({
     db:settings.db,
-    host:settings.host,
-    port:settings.port
+    host:settings.host
   })
 }));
 
@@ -87,5 +86,5 @@ app.use(function(err, req, res, next) {
   });
 });
 
-
+app.listen(settings.port);
 module.exports = app;

@@ -1,8 +1,6 @@
 var common = require('../common.js');
 var Login = require('../../models/login');
 
-
-
 var router_login = function(router) {
 	//管理员登录页
 	router.get('/admin', function(req, res, next) {
@@ -37,35 +35,27 @@ var router_login = function(router) {
 			res.send(result);
 			return;
 		}
-
-		login.findOne({
-			name: login.obj.name,
-			password: login.obj.password
-		}, function(doc) {
+		//数据库查找
+		login.findOne({}, function(doc) {
+			//管理员还没有记录需要初始化
 			if (doc == null) {
-				res.send({
-					success: false,
-					info: '登录失败：用户名或密码错误！'
+				login.init(function(doc) {
+					checkAdmin(req, res, doc, login.obj);
 				});
-				return;
+			} else {
+				checkAdmin(req, res, doc, login.obj);
 			}
-			req.session.user = doc._id; //记住登录状态
-			res.send({
-				success: true,
-				info: '登录成功!'
-			});
-
 		});
 
 	});
 
 	//注销
 	router.post('/admin/logout', function(req, res, next) {
-		if(req.session.user==null){
+		if (req.session.user == null) {
 			res.send({
-			success: false,
-			info: '未登录，无需注销！'
-		});
+				success: false,
+				info: '未登录，无需注销！'
+			});
 		}
 		req.session.user = null;
 		res.send({
@@ -74,10 +64,23 @@ var router_login = function(router) {
 		});
 	});
 
-	
-	
-
-
 }
 
+function checkAdmin(req, res, doc, obj) {
+	//登录失败
+	if (doc.name !== obj.name || doc.password !== obj.password) {
+		res.send({
+			success: false,
+			info: '登录失败：用户名或密码错误！'
+		});
+		return;
+	}
+	//登录成功
+	req.session.user = doc._id; //记住登录状态
+	res.send({
+		success: true,
+		info: '登录成功!'
+	});
+	return;
+}
 module.exports = router_login;

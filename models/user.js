@@ -4,7 +4,7 @@ var common1=require('../routes/common.js');
 var settings=require('../settings.js');
 function User(user){
 	if(user){
-		user.file=settings.dest.substr(1)+'/'+user.name+getExet(user.file);
+		user.file=settings.dest+'/'+user.name+getExet(user.file);
 	}
 	this.obj=user;	
 }
@@ -14,7 +14,7 @@ User.prototype.collection=db.get('users');
 User.prototype.insert=common.insert;
 //读取所有用户信息
 User.prototype.find=common.find;
-//读取一条用户信息
+//读取一条用户信+
 User.prototype.findOne=common.findOne;
 //更新操作
 User.prototype.update=common.update;

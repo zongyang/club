@@ -1,5 +1,6 @@
 var common = require('../common.js');
 var User = require('../../models/user');
+var path = require('path');
 
 
 
@@ -45,9 +46,9 @@ function router_user(router) {
 	});
 	//文件下载(在windons路径可能会有问题)
 	router.get('/admin/users/download', function(req, res, next) {
-		var path = process.cwd() + req.query.path;
+		var url = path.join(process.cwd(),req.query.path);
 		//res.send(req.query);
-		res.download(path);
+		res.download(url);
 	});
 }
 module.exports = router_user;
