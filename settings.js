@@ -1,5 +1,6 @@
+//配置项都不能为空
 var settings = {
-	cookieSecert: 'club',
+	cookieSecert: 'club', //session会话的数据库名，一般不用修改
 	db: 'club', //数据库名
 	host: '127.0.0.1', //数据库地址
 	dest: 'public/简历', //简历上传位置的配置
